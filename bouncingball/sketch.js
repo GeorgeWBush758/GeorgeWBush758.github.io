@@ -27,10 +27,10 @@ function setup() {
 }
 
 function draw() {
-    if (state === "start screen") {
-      background("black");
-      showInstructions();
-    }
+  if (state === "start screen") {
+    background("black");
+    showInstructions();
+  }
   else if (state === "bouncing ball") {
     background(220);
     drawCircle();
@@ -49,7 +49,7 @@ function showInstructions() {
 }
 
 function mousePressed() {
-  if (state === "start screen"); {
+  if (state === "start screen"){} {
     state = "bouncing ball";
   }
 }

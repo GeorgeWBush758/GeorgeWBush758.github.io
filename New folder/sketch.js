@@ -6,33 +6,25 @@
 // - describe what you did to take this project "above and beyond"
 
 
-let x = width/2;
-let y = height/2;
+let x;
+let y;
 let dx = 2;
 let dy = 2;
 
-
-
-
-
-
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth,windowHeight);
 
-x = width/2;
-y = height/2;
+  x = width/2;
+  y = height/2;
 
 }
-
-
-
-
 
 function draw() {
   background(220);
-  circle(width/2, height/2, 50);
   moveBall();
+  circle(x, y, 50);
 }
+
 
 function moveBall() {
   if (keyIsDown(87)) { //w
@@ -48,6 +40,9 @@ function moveBall() {
     x -= dx;
   }
 }
+
+
+
 
 
 
