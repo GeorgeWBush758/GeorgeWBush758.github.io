@@ -6,12 +6,11 @@
 // - describe what you did to take this project "above and beyond"
 
 
-let x;
-let y;
+let x = width/2;
+let y = height/2;
 let dx = 2;
 let dy = 2;
-let mario;
-let scalar = 1.0;
+
 
 
 
@@ -19,11 +18,19 @@ let scalar = 1.0;
 
 function setup() {
   createCanvas(400, 400);
+
+x = width/2;
+y = height/2;
+
 }
+
+
+
+
 
 function draw() {
   background(220);
-  circle(mouseX, mouseY, 50);
+  circle(width/2, height/2, 50);
   moveBall();
 }
 
@@ -43,10 +50,4 @@ function moveBall() {
 }
 
 
-//make agario, ball collects smaller balls to become bigger and fills up the 
-//canvas
-
-//ball collects smaller balls, coins. randomly spawn
-
-//enemy ball, if touched with mouse/ball. game over 
 
