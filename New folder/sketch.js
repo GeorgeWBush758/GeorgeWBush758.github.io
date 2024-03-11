@@ -8,8 +8,8 @@
 
 let x;
 let y;
-let dx = 2;
-let dy = 2;
+let dx = 3;
+let dy = 3;
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
@@ -40,6 +40,8 @@ function moveBall() {
     x -= dx;
   }
 }
+
+
 
 
 
