@@ -10,6 +10,8 @@ let x;
 let y;
 let dx = 3;
 let dy = 3;
+let radius = 30;
+
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
@@ -23,8 +25,23 @@ function draw() {
   background(220);
   moveBall();
   circle(x, y, 50);
+
+  drawCircle();
+  moveCircle();
+  bounceOffWall();
+  randomBall();
+
 }
 
+function randomBall() {
+  circle(random(width), random(height), 30);
+
+
+
+}
+
+
+// this should be for ball number 1
 
 function moveBall() {
   if (keyIsDown(87)) { //w
@@ -44,7 +61,27 @@ function moveBall() {
 
 
 
+//MAKE THIS CODE ANOTHER BALL, SEPERATE BALL, this should be for ball number 2
 
+function drawCircle() {
+  circle(x, y, radius * 2);
+}
+
+function moveCircle() {
+  x += dx;
+  y += dy;
+}
+
+
+function bounceOffWall() {
+  if (x + radius >= width || x - radius <= 0) {
+    dx = -1 * dx;
+   
+  }
+  if (y + radius >= height || y - radius <= 0) {
+    dy = -1 * dy;
+  }
+}
 
 
 
