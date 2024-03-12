@@ -4,6 +4,7 @@
 - [traffic light](trafficlight)
 - [Bouncing ball](bouncingball)
 - [collision demo](collision)
+- [Arrays and objects](circles)
 
 
 
