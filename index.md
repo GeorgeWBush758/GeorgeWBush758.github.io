@@ -6,7 +6,7 @@
 - [collision demo](collision)
 - [Arrays and objects](circles)
 
-
+- [generative art](art)
 
 
 ## projects
