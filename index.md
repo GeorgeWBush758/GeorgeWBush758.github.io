@@ -7,7 +7,7 @@
 - [Arrays and objects](circles)
 
 - [generative art](art)
-
+- [terrain generation](terrain)
 
 ## projects
 - [Interactive scene](scene)
