@@ -8,6 +8,7 @@
 
 - [generative art](art)
 - [terrain generation](terrain)
+- [Bubble Movement](bubble)
 
 ## projects
 - [Interactive scene](scene)
