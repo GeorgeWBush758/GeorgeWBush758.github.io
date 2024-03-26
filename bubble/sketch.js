@@ -19,12 +19,35 @@ window.setInterval(spawnBubble, 500);
 
 
 function draw() {
-  background("white");
+  background("black");
 
 
   //moveBubblesRandomly();
   moveBubblesWithNoise();
   displayBubbles();
+}
+
+function mousePressed() {
+  for (let i = theBubbles.length - 1; i >= 0; i--) {
+    if (clickedInBubble(mouseX, mouseY, theBubbles[i])) {
+      theBubbles.splice(i, 1);
+
+
+    }
+  }
+}
+
+function clickedInBubble(x, y, someBubble) {
+  let distancesAway = dist(x, y, someBubble.x, someBubble.y);
+  let radius = someBubble.size / 2;
+  if (distancesAway < radius) {
+    return true;
+  }
+  else {
+    return false;
+  }
+
+
 }
 
 function moveBubblesWithNoise() {
@@ -85,7 +108,7 @@ function displayBubbles() {
 
 function spawnBubble() {
   let someBubble = {
-    size: random(10, 30),
+    size: random(30, 50),
     x: random(width),
     y: random(height),
     speed: 3,
@@ -95,7 +118,7 @@ function spawnBubble() {
     alpha: random(255),
     timeX: random(1000000),
     timeY: random(1000000),
-    deltaTime: 0.01,
+    deltaTime: 0.002,
   };
   theBubbles.push(someBubble);
 
