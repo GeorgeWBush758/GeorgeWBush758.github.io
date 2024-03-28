@@ -2,6 +2,9 @@
 //make a cookie clicker game where balss from the top and dissapear at the bottom
 
 
+let theCookies=[];
+let state = "startScreen";
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -9,15 +12,45 @@ function setup() {
 
 function draw() {
   background(220);
-  drawCircle();
+  
+  drawRandomCookie();
+  drawCookie();
   circle();
+  showText();
+}
 
+
+// make a start screen 
+
+function showText() {
+  fill("black");
+  textSize(42);
+  textAlign(CENTER, CENTER);
+  text("cookie", width/2, height/2.30);
 }
 
 
 
-function drawCircle() {
+
+
+// draw a cookie code
+function drawCookie() {
   fill(181, 101, 29);
   circle(width/2, height/2, 50);
-  circle(width/2, height/2, 20);
+  fill("black");
+  circle(width/2, height/2.10, 5);
+  circle(width/1.94, height/1.95, 5);
+  circle(width/1.94, height/2.04, 5);
+  //right side  
+  circle(width/2, height/2, 5);  
+  circle(width/2, height/1.91, 5);
+  //left side  
+  circle(width/2.06, height/2.04, 5);
+  circle(width/2.06, height/1.95, 5);
+}
+
+
+
+function drawRandomCookie() {
+  
 }
