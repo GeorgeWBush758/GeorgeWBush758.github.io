@@ -2,7 +2,7 @@
 //make a cookie clicker game where balss from the top and dissapear at the bottom
 
 
-let theCookies=[];
+let theCookies=[drawCookie];
 let state = "startScreen";
 
 function setup() {
@@ -54,3 +54,12 @@ function drawCookie() {
 function drawRandomCookie() {
   
 }
+
+
+
+let cookie = {
+  x: random(width),
+  y: 0,
+  radius: 20,
+};
+theCookies.push(cookie);
