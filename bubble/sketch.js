@@ -3,6 +3,7 @@
 let theBubbles = [];
 
 
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
@@ -70,8 +71,6 @@ function moveBubblesWithNoise() {
 
 
 }
-
-
 
 function moveBubblesRandomly() {
   for (let bubble of theBubbles) {
