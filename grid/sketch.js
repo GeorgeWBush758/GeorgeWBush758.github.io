@@ -19,8 +19,9 @@ const GRID_SIZE = 10;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  
   grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
-
+  
   //this is very stoopid... check if rught size
   cellSize = height/grid.length;
 }
@@ -36,7 +37,15 @@ function keyPressed() {
   }
 }
 
+function mousePressed() {
+  let x = Math.floor(mouseX/cellSize);
+  let y = Math.floor(mouseY/cellSize);
+  //console.log(x,y);
 
+  //toggle color of cube/cell
+  if
+  
+}
 
 
 
