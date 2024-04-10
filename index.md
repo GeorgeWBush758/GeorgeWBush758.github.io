@@ -10,6 +10,10 @@
 - [terrain generation](terrain)
 - [Bubble Movement](bubble)
 
+- [2d grid](grid)
+
+
+
 ## projects
 - [Interactive scene](scene)
 
