@@ -1,17 +1,13 @@
 
 
-
-
-//let grid = [[1,0,0,1],
-//            [0,1,0,1],
-//            [0,0,0,1],
-//            [1,1,0,0],
-//            [1,0,1,1],
-//            [0,0,0,1],
-//            [0,0,1,1],
-//            [0,1,0,1]];
-
-// random grid
+// let grid = [[1, 0, 0, 1],
+//             [0, 1, 0, 1],
+//             [1, 1, 0, 0],
+//             [1, 0, 1, 1],
+//             [0, 0, 0, 1],
+//             [0, 0, 1, 1],
+//             [0, 1, 0, 1],
+//             [0, 0, 0, 1]];
 
 let grid;
 let cellSize;
@@ -19,10 +15,11 @@ const GRID_SIZE = 10;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  
+
+  //if randomizing the grid, do this:
   grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
   
-  //this is very stoopid... check if rught size
+  //this is dumb -- should check if this is the right size!
   cellSize = height/grid.length;
 }
 
@@ -35,19 +32,34 @@ function keyPressed() {
   if (key === "r") {
     grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
   }
+
+  if (key === "e") {
+    grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
+  }
 }
 
 function mousePressed() {
   let x = Math.floor(mouseX/cellSize);
   let y = Math.floor(mouseY/cellSize);
-  //console.log(x,y);
 
-  //toggle color of cube/cell
-  if
-  
+  // console.log(x, y);
+  if (x < GRID_SIZE && y < GRID_SIZE) {
+    toggleCell;
+
+  }
+
+
 }
 
-
+function toggleCell(x, y) {
+  //toggle the color of the cell
+  if (grid[y][x] === 0) {
+    grid[y][x] = 1;
+  }
+  else {
+    grid[y][x] = 0;
+  }
+}
 
 function displayGrid() {
   for (let y = 0; y < grid.length; y++) {
@@ -65,12 +77,12 @@ function displayGrid() {
 
 function generateRandomGrid(cols, rows) {
   let emptyArray = [];
-  for(let y = 0; y < rows; y++) {
+  for (let y = 0; y < rows; y++) {
     emptyArray.push([]);
     for (let x = 0; x < cols; x++) {
+      //half the time, be a 1. Other half, be a 0.
       if (random(100) < 50) {
         emptyArray[y].push(0);
-  
       }
       else {
         emptyArray[y].push(1);
@@ -78,12 +90,14 @@ function generateRandomGrid(cols, rows) {
     }
   }
   return emptyArray;
-
 }
 
-
-
-
-
-
-
+function generateEmptyGrid(cols, rows) {
+  let emptyArray = [];
+  for (let y = 0; y < rows; y++) {
+    emptyArray.push([]);
+    for (let x = 0; x < cols; x++) {
+      emptyArray[y].push(0);
+    }
+  }
+}
