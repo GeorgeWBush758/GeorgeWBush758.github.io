@@ -1,14 +1,3 @@
-
-
-// let grid = [[1, 0, 0, 1],
-//             [0, 1, 0, 1],
-//             [1, 1, 0, 0],
-//             [1, 0, 1, 1],
-//             [0, 0, 0, 1],
-//             [0, 0, 1, 1],
-//             [0, 1, 0, 1],
-//             [0, 0, 0, 1]];
-
 let grid;
 let cellSize;
 const GRID_SIZE = 10;
@@ -43,10 +32,20 @@ function mousePressed() {
   let y = Math.floor(mouseY/cellSize);
 
   // console.log(x, y);
-  if (x < GRID_SIZE && y < GRID_SIZE) {
-    toggleCell;
 
+  //don't fall off the edge of the grid...
+  if (x < GRID_SIZE && y < GRID_SIZE) {
+    toggleCell(x, y);
   }
+
+  
+
+
+
+
+
+
+
 
 
 }
@@ -100,4 +99,5 @@ function generateEmptyGrid(cols, rows) {
       emptyArray[y].push(0);
     }
   }
+  return emptyArray;
 }
