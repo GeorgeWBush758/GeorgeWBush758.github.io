@@ -1,16 +1,43 @@
+//             [1, 0, 1, 1],
+//             [0, 0, 0, 1],
+//             [0, 0, 1, 1],
+//             [0, 1, 0, 1],
+//             [0, 0, 0, 1]];
+
 let grid;
 let cellSize;
 const GRID_SIZE = 10;
+let toggleStyle = "self";
+
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-
+  if (windowWidth < windowHeight) {
+    createCanvas(windowWidth, windowHeight); 
+  }
+  else {
+    createCanvas(windowHeight, windowHeight);
+  }
   //if randomizing the grid, do this:
   grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
   
   //this is dumb -- should check if this is the right size!
-  cellSize = height/grid.length;
+  cellSize = height/grid.length; 
 }
+
+
+function windowResized() {
+  if (windowWidth < windowHeight) {
+    resizeCanvas(windowWidth, windowHeight); 
+  }
+  else {
+    resizeCanvas(windowHeight, windowHeight);
+  }
+  cellSize = height/grid.length; 
+
+}
+
+
+
 
 function draw() {
   background(220);
@@ -25,38 +52,44 @@ function keyPressed() {
   if (key === "e") {
     grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
   }
+
+  if (key === "n") {
+    toggleStyle = "neighbors";
+  }
+
+  if (key === "s") {
+    toggleStyle = "self";
+  }
 }
 
 function mousePressed() {
   let x = Math.floor(mouseX/cellSize);
   let y = Math.floor(mouseY/cellSize);
 
-  // console.log(x, y);
+  //toggle cell, E,W,S,N
+  toggleCell(x, y);
 
-  //don't fall off the edge of the grid...
-  if (x < GRID_SIZE && y < GRID_SIZE) {
-    toggleCell(x, y);
+
+  if (toggleStyle === "neighbors") {
+    toggleCell(x + 1, y);
+    toggleCell(x - 1, y);
+    toggleCell(x, y + 1);
+    toggleCell(x, y - 1);
   }
-
-  
-
-
-
-
-
-
-
-
-
 }
 
 function toggleCell(x, y) {
-  //toggle the color of the cell
-  if (grid[y][x] === 0) {
-    grid[y][x] = 1;
-  }
-  else {
-    grid[y][x] = 0;
+  if (x < GRID_SIZE && y < GRID_SIZE &&
+  x >= 0 && y >=0) {
+
+    //toggle the color of the cell
+  
+    if (grid[y][x] === 0) {
+      grid[y][x] = 1;
+    }
+    else {
+      grid[y][x] = 0;
+    }
   }
 }
 
