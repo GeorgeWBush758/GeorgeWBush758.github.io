@@ -11,7 +11,7 @@
 - [Bubble Movement](bubble)
 
 - [2d grid](grid)
-
+- [grid game](gridgame)
 
 
 ## projects
