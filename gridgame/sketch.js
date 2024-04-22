@@ -14,12 +14,25 @@ let backgroundMusic;
 let cantWalkSound;
 let state = "start screen";
 
+let stoneImg;
+let bombImg;
+let brickImg;
+let boxImg;
+let floorImg;
+
+
 function preload() {
   grassImg = loadImage("grass1.png");
   pavingImg = loadImage("paving 4.png");
   backgroundMusic = loadSound("TownTheme.mp3");
   cantWalkSound = loadSound("magic1.wav");
-}
+  stoneImg = loadImage("white_pebble.png");
+  bombImg = loadImage("bomb.png");
+  brickImg = loadImage("brickwall.png");
+  boxImg = loadImage("box.png");
+  floorImg = loadImage("floor.png");
+
+} 
 
 
 function setup() {
@@ -38,7 +51,7 @@ function setup() {
   cellSize = height/grid.length;
 
   //add player to the grid
-  grid[player.y][player.x] = PLAYER;
+  // grid[player.y][player.x] = PLAYER;
 
   //equalize my sounds
   backgroundMusic.setVolume(0.4);
@@ -60,13 +73,19 @@ function windowResized() {
 function draw() {
   if (state === "start screen") {
     background("black");
-    text("hello");
     fill("white");
     stroke("white");
+    textSize(30);
+    textAlign(CENTER, CENTER);
+    text("press space bar to start game", width/2, height/2);
+    text("press WASD to move", width/2, height/1.70);
+    text("press B to drop a bomb", width/2, height/1.50);
+    text("welcome to my bomb game", width/2, height/2.80);
   }
   else if (state === "game") {
     background(220);
     displayGrid();
+    displayPlayer();
   }
 }
 
@@ -99,25 +118,30 @@ function keyPressed() {
     state = "game";
     backgroundMusic.loop();
   }
+
+  if (key === "b") {
+    placeBomb()
+  }
 }
+
 
 function movePlayer(x, y) {
   //don't move off the grid, and only move into open tiles
   if (x < GRID_SIZE && y < GRID_SIZE &&
       x >= 0 && y >= 0 && grid[y][x] === OPEN_TILE) {
     //previous player location
-    let oldX = player.x;
-    let oldY = player.y;
+    // let oldX = player.x;
+    // let oldY = player.y;
 
     //move the player
     player.x = x;
     player.y = y;
 
     //reset old location to be an empty tile
-    grid[oldY][oldX] = OPEN_TILE;
+    // grid[oldY][oldX] = OPEN_TILE;
 
     //move the player to the new spot
-    grid[player.y][player.x] = PLAYER;
+    // grid[player.y][player.x] = PLAYER;
   }
   else {
     cantWalkSound.play();
@@ -151,18 +175,23 @@ function displayGrid() {
     for (let x = 0; x < grid[y].length; x++) {
       if (grid[y][x] === IMPASSIBLE) {
         // fill("black");
-        image(grassImg, x * cellSize, y * cellSize, cellSize);
+        image(boxImg, x * cellSize, y * cellSize, cellSize);
       }
       else if (grid[y][x] === OPEN_TILE) {
         // fill("white");
-        image(pavingImg, x * cellSize, y * cellSize, cellSize);
+        image(floorImg, x * cellSize, y * cellSize, cellSize);
       }
-      else if (grid[y][x] === PLAYER) {
-        fill("red");
-        square(x * cellSize, y * cellSize, cellSize);
-      }
+      // else if (grid[y][x] === PLAYER) {
+      //   fill("red");
+      //   square(x * cellSize, y * cellSize, cellSize);
+      // }
     }
   }
+}
+
+function displayPlayer() {
+  fill("red");
+  square(player.x * cellSize, player.y * cellSize, cellSize);
 }
 
 function generateRandomGrid(cols, rows) {
