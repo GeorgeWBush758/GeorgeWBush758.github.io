@@ -19,6 +19,14 @@ let bombImg;
 let brickImg;
 let boxImg;
 let floorImg;
+let crateImg;
+
+
+function displayBomb() {
+  bombImg = loadImage("bomb.png");
+
+}
+
 
 
 function preload() {
@@ -31,6 +39,7 @@ function preload() {
   brickImg = loadImage("brickwall.png");
   boxImg = loadImage("box.png");
   floorImg = loadImage("floor.png");
+  crateImg = loadImage("crate.png");
 
 } 
 
@@ -120,7 +129,7 @@ function keyPressed() {
   }
 
   if (key === "b") {
-    placeBomb()
+    displayBomb(player.x * cellSize, player.y * cellSize);
   }
 }
 
@@ -175,11 +184,11 @@ function displayGrid() {
     for (let x = 0; x < grid[y].length; x++) {
       if (grid[y][x] === IMPASSIBLE) {
         // fill("black");
-        image(boxImg, x * cellSize, y * cellSize, cellSize);
+        image(crateImg, x * cellSize, y * cellSize, cellSize);
       }
       else if (grid[y][x] === OPEN_TILE) {
         // fill("white");
-        image(floorImg, x * cellSize, y * cellSize, cellSize);
+        image(grassImg, x * cellSize, y * cellSize, cellSize);
       }
       // else if (grid[y][x] === PLAYER) {
       //   fill("red");
