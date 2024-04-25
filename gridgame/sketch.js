@@ -1,6 +1,6 @@
 let grid;
 let cellSize;
-const GRID_SIZE = 10;
+const GRID_SIZE = 11;
 const PLAYER = 9;
 const OPEN_TILE = 0;
 const IMPASSIBLE = 1;
@@ -20,6 +20,7 @@ let brickImg;
 let boxImg;
 let floorImg;
 let crateImg;
+let playerImg;
 
 
 function displayBomb() {
@@ -40,6 +41,7 @@ function preload() {
   boxImg = loadImage("box.png");
   floorImg = loadImage("floor.png");
   crateImg = loadImage("crate.png");
+  playerImg = loadImage("player.png");
 
 } 
 
@@ -129,7 +131,7 @@ function keyPressed() {
   }
 
   if (key === "b") {
-    displayBomb(player.x * cellSize, player.y * cellSize);
+    displayBomb(bombImg, player.x * cellSize, player.y * cellSize, cellSize);
   }
 }
 
@@ -190,10 +192,11 @@ function displayGrid() {
         // fill("white");
         image(grassImg, x * cellSize, y * cellSize, cellSize);
       }
-      // else if (grid[y][x] === PLAYER) {
+      else if (grid[y][x] === PLAYER) {
       //   fill("red");
-      //   square(x * cellSize, y * cellSize, cellSize);
-      // }
+        image(bombImg, player.x * cellSize, player.y * cellSize, cellSize);
+         
+      }
     }
   }
 }
@@ -201,6 +204,8 @@ function displayGrid() {
 function displayPlayer() {
   fill("red");
   square(player.x * cellSize, player.y * cellSize, cellSize);
+  //square(player.x * cellSize, player.y * cellSize, cellSize);
+
 }
 
 function generateRandomGrid(cols, rows) {
