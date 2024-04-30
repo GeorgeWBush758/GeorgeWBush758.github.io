@@ -2,6 +2,7 @@ let grid;
 let cellSize;
 const GRID_SIZE = 11;
 const PLAYER = 9;
+const BOMB = 8;
 const OPEN_TILE = 0;
 const IMPASSIBLE = 1;
 let player = {
@@ -23,10 +24,10 @@ let crateImg;
 let playerImg;
 
 
-function displayBomb() {
-  bombImg = loadImage("bomb.png");
+// function displayBomb() {
+//   bombImg = loadImage("bomb.png");
 
-}
+// }
 
 
 
@@ -98,6 +99,17 @@ function draw() {
     displayGrid();
     displayPlayer();
   }
+  else if (state === "game over") {
+    background("black");
+    fill("white");
+    stroke("white");
+    textSize("30");
+    textAlign(CENTER, CENTER);
+    text("you won yay", width/2, height/2);
+
+  }
+
+
 }
 
 function keyPressed() {
@@ -130,10 +142,19 @@ function keyPressed() {
     backgroundMusic.loop();
   }
 
+  // incorperate a millie seconds function to bomb to make it dissapear after 3-5 seconds (turn back to grass block)
   if (key === "b") {
-    displayBomb(bombImg, player.x * cellSize, player.y * cellSize, cellSize);
+    grid[player.y][player.x] = BOMB;
   }
+
+  if (key === "p") {
+    state = "game over";
+  }
+
+
 }
+
+
 
 
 function movePlayer(x, y) {
@@ -192,9 +213,9 @@ function displayGrid() {
         // fill("white");
         image(grassImg, x * cellSize, y * cellSize, cellSize);
       }
-      else if (grid[y][x] === PLAYER) {
+      else if (grid[y][x] === BOMB) {
       //   fill("red");
-        image(bombImg, player.x * cellSize, player.y * cellSize, cellSize);
+        image(bombImg, x * cellSize, y * cellSize, cellSize);
          
       }
     }
