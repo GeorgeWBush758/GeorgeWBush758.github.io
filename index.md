@@ -12,6 +12,7 @@
 
 - [2d grid](grid)
 - [grid game](gridgame)
+- [walker oop](walker)
 
 
 ## projects
